@@ -1,0 +1,33 @@
+version: "3"
+services:
+  nginx:
+    image: nginx
+    container_name: nginx_container
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf # 挂载配置文件
+    depends_on:
+      - flask
+
+  flask:
+    image: python:3.7
+    container_name: flask_container
+    build: ./site
+    ports:
+     - "8080:8080"
+    links: 
+     - mysql:mysql  
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_container
+    restart: always
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"

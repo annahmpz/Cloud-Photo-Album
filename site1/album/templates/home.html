@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<title>主页</title>
+		<!-- 引入 Bootstrap -->
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<!-- 包括所有已编译的插件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			body {
+			  background-image: url({{url_for("static",filename='background.JPG')}});
+			  background-position: center 0;
+			  background-repeat: no-repeat;
+			  background-attachment: fixed;
+			  background-size: cover;
+			  -webkit-background-size: cover;
+			  -o-background-size: cover;
+			  -moz-background-size: cover;
+			  -ms-background-size: cover;
+			}
+			.border {  
+			   width: 0;   
+			   height:0;  
+			   border-top: 100px solid steelblue;  
+			   border-right: 250px solid rgba(255,255,255,0.9);  
+			 } 
+			 body,html {
+			             margin: 0px;
+			             height:100%;
+			         }
+		</style>
+	</head>
+	<body>
+		
+		<ul id="nav" class="nav nav-pills nav-stacked" style="width: 10%;height: 100%;background-color: #204D74;">
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+		  <li role="presentation" id="bar-1"><a href={{url_for("album.home")}} style=" color: #A6E1EC;font-size:22px;"onMouseOver="this.style.color='royalblue';" onMouseOut="this.style.color='#A6E1EC';">我的相册</a></li>
+		  <br/>
+		  <li class="nav-header" style="color: lightgray;"></li>
+		  <li role="presentation" id="bar-2"><a href={{url_for("album.change")}} style="color: #A6E1EC;font-size:22px;"onMouseOver="this.style.color='royalblue';" onMouseOut="this.style.color='#A6E1EC';">信息管理</a></li>
+		</ul>
+		<div class="body" style="position: absolute;left: 16%;top: 10%;width: 83%;">
+			<div class="load_form" style=" width: 90%; height: 550px; background-color: rgba(255,255,255,0.8);">
+				<br/>
+				<br/>
+				<br/>
+
+				<div style="padding-left: 5%;">
+					{%for item in pro%}
+					<a href={{url_for("album.detail",id=item.id)}}><button  type="button" class = "btn btn-default" style="margin-left: 2%;margin-top: 2%;width: 16%;background-color: white;color: black;">
+					<p class="text-left" style="font-size: 20px;">{{item.name}}<br/></p>
+					<p class="text-left" style="font-size: 15px;">({{item.type}})<br/>{{item.time}}</p>
+					</button></a>
+					{%endfor%}
+					<a href={{url_for("album.create")}}><button  type="button" class = "btn btn-default" style="margin-left: 2%;width: 14.5%;margin-top: 2%;background-color: #C0C0C0; ">
+						<p class="text-center" style="color: white;font-size: 35px;font-weight: bold;background-color: #C0C0C0;));">+</p>
+					</button></a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

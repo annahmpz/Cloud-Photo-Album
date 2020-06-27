@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<title>新建相册</title>
+		<!-- 引入 Bootstrap -->
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<!-- 包括所有已编译的插件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			body {
+			  background-image: url({{url_for("static",filename='background.JPG')}});
+			  background-position: center 0;
+			  background-repeat: no-repeat;
+			  background-attachment: fixed;
+			  background-size: cover;
+			  -webkit-background-size: cover;
+			  -o-background-size: cover;
+			  -moz-background-size: cover;
+			  -ms-background-size: cover;
+			}
+			.border {  
+			   width: 0;   
+			   height:0;  
+			   border-top: 100px solid steelblue;  
+			   border-right: 250px solid rgba(255,255,255,0.9);  
+			 } 
+			 body,html {
+			             margin: 0px;
+			             height:100%;
+			         }
+		</style>
+	</head>
+	<body>
+		<ul id="nav" class="nav nav-pills nav-stacked" style="width: 10%;height: 100%;background-color: #204D74;">
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<li role="presentation" id="bar-1"><a href={{url_for("album.home")}} style=" color: #A6E1EC;font-size:22px;"onMouseOver="this.style.color='royalblue';" onMouseOut="this.style.color='#A6E1EC';">我的相册</a></li>
+			<br/>
+			<li class="nav-header" style="color: lightgray;"></li>
+			<li role="presentation" id="bar-2"><a href={{url_for("album.change")}} style="color: #A6E1EC;font-size:22px;"onMouseOver="this.style.color='royalblue';" onMouseOut="this.style.color='#A6E1EC';">信息管理</a></li>
+		  </ul>
+		
+		<div class="body" style="position: absolute;left: 16%;top: 10%;width: 83%;">
+			
+			<div id="load_form" style=" width: 90%; height: 500px; background-color: rgba(255,255,255,0.8);">
+				<div id="message">
+			    <div id="basic_msg">
+				<div id = "basic_msg_content">
+						</br>
+						</br>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+				<form method="post">
+					{{ form.csrf_token }}
+					<label class="form-inline" for="Profession" style="color: black;font-size: 20px; margin-left: 40%;">相册
+					<input type="text" class="form-control" id="name" name="name" placeholder="相册名称" style="width: 70%;margin-left: 10%;" />
+					</label>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<label class="form-inline" for="school" style="color: black;font-size: 20px; margin-left: 40%;">类型</label>
+					<select id="col_type" name="col_type" style="width: 20%;font-size: 20px;margin-left: 2%;border-radius: 5px;" >
+					<option value ="私密">私密</option>
+					<option value ="共享">共享</option>
+					</select>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<input type="submit" class="btn btn-primary" id="submit" name="submit" value='创建相册'
+					style="font-size: 20px;width: 15%; margin-left:45%;" />
+
+					
+				</form>
+				</div>
+				</div>
+			</div>
+			<div>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+
+				<br/>
+				<br/>
+
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
